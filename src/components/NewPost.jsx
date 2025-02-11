@@ -1,22 +1,13 @@
-import {useState} from 'react'
-
-function NewPost() {
-    const [ enteredBody, setEnteredBody ] = useState('')
-    function changeBodyHandler(event) {
-        console.log('pre-value: ', enteredBody)
-        setEnteredBody(event.target.value)
-    }
-
+function NewPost(props) {
     return (
         <div>
             <p>
                 <label htmlFor="body">Text</label>
-                <textarea id="body" required rows={3} onChange={changeBodyHandler} />
+                <textarea id="body" required rows={3} onChange={props.onChangeBody} />
             </p>
-            { enteredBody }
             <p>
                 <label htmlFor="name">Your Name</label>
-                <input type="text" id="name" required />
+                <input type="text" id="name" required onChange={props.onChangeAuthor} />
             </p>
         </div>
     )
