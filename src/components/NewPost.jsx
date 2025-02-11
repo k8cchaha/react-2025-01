@@ -3,7 +3,7 @@ import {useState} from 'react'
 function NewPost() {
     const [ enteredBody, setEnteredBody ] = useState('')
     function changeBodyHandler(event) {
-        console.log(event.target.value)
+        console.log('pre-value: ', enteredBody)
         setEnteredBody(event.target.value)
     }
 
