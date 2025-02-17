@@ -9,6 +9,7 @@ function NewPost(props) {
                 <label htmlFor="name">Your Name</label>
                 <input type="text" id="name" required onChange={props.onChangeAuthor} />
             </p>
+            <button onClick={() => {throw new Error("This is your first error!");}}>Break the world</button>
         </div>
     )
 }
