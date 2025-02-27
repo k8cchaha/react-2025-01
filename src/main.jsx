@@ -1,10 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { RouterProvider, createBrowserRouter} from 'react-router-dom'
+
 import './index.css'
 import App from './App'
-import PostList from './components/PostList'
-import MainHeader from './components/MainHeader'
 import * as Sentry from "@sentry/react";
+// import NewPost from './components/NewPost'
+
+const router = createBrowserRouter([
+  { path: '/', element: <App /> },
+  // { path: '/create-post', element: <NewPost /> }
+])
 
 Sentry.init({
   dsn: "https://edd9c716480206c713fa513bf7e0a2ab@o4508834067316736.ingest.us.sentry.io/4508834071773184",
@@ -23,6 +29,6 @@ Sentry.init({
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>
 )
