@@ -7,11 +7,10 @@ import classes from './PostList.module.css'
 
 
 function PostList({isPosting, onStopPosting}) {
-    console.log('KKKKK')
+    // 會造成無窮迴圈 => 必須使用 useEffect
     // fetch('http://localhost:8080/posts')
     // .then(res=>res.json())
-    // .then(data=>console.log(data))
-
+    // .then(data=>setPosts(resData.posts))
 
     const [posts, setPosts] = useState([])
 
