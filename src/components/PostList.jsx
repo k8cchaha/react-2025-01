@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Post from './Post'
 import NewPost from './NewPost';
@@ -7,11 +7,36 @@ import classes from './PostList.module.css'
 
 
 function PostList({isPosting, onStopPosting}) {
+    console.log('KKKKK')
+    // fetch('http://localhost:8080/posts')
+    // .then(res=>res.json())
+    // .then(data=>console.log(data))
+
+
     const [posts, setPosts] = useState([])
+
+    useEffect(()=> {
+        async function fetchPosts() {
+            console.log('call api')
+            const response = await fetch('http://localhost:8080/posts');
+            const resData = await response.json()
+            setPosts(resData.posts)
+        }
+
+        fetchPosts()
+    }, [])
     
     function addPostHandler(postData) {
         // 變數的值可能是基於先前渲染時的狀態，如果有多個狀態更新排隊，這個值可能不是最新的
         // setPosts([postData, ...posts])
+
+        fetch('http://localhost:8080/posts', {
+            method: 'POST',
+            body: JSON.stringify(postData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
 
         // 如果新資料依賴於舊資料, 應該要使用函數形式來更新狀態
         // React 會傳入最新的狀態 existingPosts，確保你的更新基於當下正確的狀態
