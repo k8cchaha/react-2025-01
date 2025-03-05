@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider, createBrowserRouter} from 'react-router-dom'
+import RootLayout from './routes/RootLayout'
 
 import './index.css'
 import App from './App'
@@ -8,7 +9,9 @@ import * as Sentry from "@sentry/react";
 // import NewPost from './components/NewPost'
 
 const router = createBrowserRouter([
-  { path: '/', element: <App /> },
+  { path: '/', element: <RootLayout />, children: [
+    { path: '/', element: <App /> },
+  ]},
   // { path: '/create-post', element: <NewPost /> }
 ])
 
