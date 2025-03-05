@@ -18,7 +18,6 @@ const router = createBrowserRouter([
 Sentry.init({
   dsn: "https://edd9c716480206c713fa513bf7e0a2ab@o4508834067316736.ingest.us.sentry.io/4508834071773184",
   release: '1.0.0',
-  environment: 'Testing',
   integrations: [
     Sentry.browserTracingIntegration(),
     Sentry.replayIntegration(),
